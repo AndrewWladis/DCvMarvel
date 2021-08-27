@@ -6,12 +6,16 @@ const marvelFighterPicture = document.getElementById('marvelFighter');
 let aquamanIcon = document.getElementById('aquamanIcon');
 let batmanIcon = document.getElementById('batmanIcon');
 let flashIcon = document.getElementById('flashIcon');
+let greenlanternIcon = document.getElementById('greenlanternIcon');
 let nightwingIcon = document.getElementById('nightwingIcon');
 let shazamIcon = document.getElementById('shazamIcon');
+let superboyIcon = document.getElementById('superboyIcon');
 let blackpantherIcon = document.getElementById('blackpantherIcon');
 let captainamericaIcon = document.getElementById('captainamericaIcon');
+let cyclopsIcon = document.getElementById('cyclopsIcon');
 let daredevilIcon = document.getElementById('daredevilIcon');
 let ghostriderIcon = document.getElementById('ghostriderIcon');
+let mrfantasticIcon = document.getElementById('mrfantasticIcon');
 let spidermanIcon = document.getElementById('spidermanIcon');
 let currentDcFighter = 'base';
 let currentMarvelFighter = 'base';
@@ -42,6 +46,11 @@ flashIcon.onclick = function(){
     dcFighterPicture.src = 'images/fighters/flash/basic.gif'
 }
 
+greenlanternIcon.onclick = function(){
+    currentDcFighter = 'greenlantern';
+    dcFighterPicture.src = 'images/fighters/greenlantern/basic.gif'
+}
+
 nightwingIcon.onclick = function(){
     currentDcFighter = 'nightwing';
     dcFighterPicture.src = 'images/fighters/nightwing/basic.gif'
@@ -52,9 +61,19 @@ shazamIcon.onclick = function(){
     dcFighterPicture.src = 'images/fighters/shazam/basic.gif'
 }
 
+superboyIcon.onclick = function(){
+    currentDcFighter = 'superboy';
+    dcFighterPicture.src = 'images/fighters/superboy/basic.gif'
+}
+
 blackpantherIcon.onclick = function(){
     currentMarvelFighter = 'blackpanther';
     marvelFighterPicture.src = 'images/fighters/blackpanther/basic.gif'
+}
+
+cyclopsIcon.onclick = function(){
+    currentMarvelFighter = 'cyclops';
+    marvelFighterPicture.src = 'images/fighters/cyclops/basic.gif'
 }
 
 captainamericaIcon.onclick = function(){
@@ -70,6 +89,11 @@ daredevilIcon.onclick = function(){
 ghostriderIcon.onclick = function(){
     currentMarvelFighter = 'ghostrider';
     marvelFighterPicture.src = 'images/fighters/ghostrider/basic.gif'
+}
+
+mrfantasticIcon.onclick = function(){
+    currentMarvelFighter = 'mrfantastic';
+    marvelFighterPicture.src = 'images/fighters/mrfantastic/basic.gif'
 }
 
 spidermanIcon.onclick = function(){
@@ -99,21 +123,21 @@ document.onkeyup = function(e){
         console.log('dc attack works')
         dcAttacking = true;
         attack()
-        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; }, 250);
+        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcAttacking = false; }, 250);
     } else if (e.keyCode == 90 && isGameOver == false){
         dcFighterPicture.src = `images/fighters/${currentDcFighter}/block.gif`
         dcBlocking = true;
-        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcBlocking = false; }, 350);
+        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcBlocking = false; }, 1000);
     } else if (e.keyCode == 75 && isGameOver == false){
         marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/attack.gif`
         console.log('marvel attack works')
         marvelAttacking = true;
         attack()
-        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; }, 250);
+        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 250);
     } else if (e.keyCode == 77 && isGameOver == false){
         marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/block.gif`
         marvelBlocking = true;
-        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; dcBlocking = false; }, 350);
+        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelBlocking = false; }, 1000);
     }
 }
 
@@ -130,6 +154,7 @@ function attack() {
         isGameOver = true;
         mainHeader.innerText = 'Marvel Wins!';
         dcFighterPicture.src = 'images/blank.png';
+        setTimeout(function(){ window.location.replace("marvelbossbattle.html"); }, 1000);
     } else if (marvelHealth < 1) {
         isGameOver = true;
         mainHeader.innerText = 'DC Wins!';
