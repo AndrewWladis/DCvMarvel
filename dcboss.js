@@ -10,22 +10,15 @@ let greenlanternIcon = document.getElementById('greenlanternIcon');
 let nightwingIcon = document.getElementById('nightwingIcon');
 let shazamIcon = document.getElementById('shazamIcon');
 let superboyIcon = document.getElementById('superboyIcon');
-let blackpantherIcon = document.getElementById('blackpantherIcon');
-let captainamericaIcon = document.getElementById('captainamericaIcon');
-let cyclopsIcon = document.getElementById('cyclopsIcon');
-let daredevilIcon = document.getElementById('daredevilIcon');
-let ghostriderIcon = document.getElementById('ghostriderIcon');
-let mrfantasticIcon = document.getElementById('mrfantasticIcon');
-let spidermanIcon = document.getElementById('spidermanIcon');
 let currentDcFighter = 'base';
-let currentMarvelFighter = 'base';
+let currentMarvelFighter = 'thanos';
 let isGameOver = true;
 let dcBlocking = false;
 let marvelBlocking = false;
 let dcAttacking = false;
 let marvelAttacking = false;
-let dcHealth = 250;
-let marvelHealth = 250;
+let dcHealth = 300;
+let marvelHealth = 550;
 const dcHealthBar = document.getElementById('dcHealth');
 const marvelHealthBar = document.getElementById('marvelHealth');
 let count = 0;
@@ -66,51 +59,20 @@ superboyIcon.onclick = function(){
     dcFighterPicture.src = 'images/fighters/superboy/basic.gif'
 }
 
-blackpantherIcon.onclick = function(){
-    currentMarvelFighter = 'blackpanther';
-    marvelFighterPicture.src = 'images/fighters/blackpanther/basic.gif'
-}
-
-cyclopsIcon.onclick = function(){
-    currentMarvelFighter = 'cyclops';
-    marvelFighterPicture.src = 'images/fighters/cyclops/basic.gif'
-}
-
-captainamericaIcon.onclick = function(){
-    currentMarvelFighter = 'captainamerica';
-    marvelFighterPicture.src = 'images/fighters/captainamerica/basic.gif'
-}
-
-daredevilIcon.onclick = function(){
-    currentMarvelFighter = 'daredevil';
-    marvelFighterPicture.src = 'images/fighters/daredevil/basic.gif'
-}
-
-ghostriderIcon.onclick = function(){
-    currentMarvelFighter = 'ghostrider';
-    marvelFighterPicture.src = 'images/fighters/ghostrider/basic.gif'
-}
-
-mrfantasticIcon.onclick = function(){
-    currentMarvelFighter = 'mrfantastic';
-    marvelFighterPicture.src = 'images/fighters/mrfantastic/basic.gif'
-}
-
-spidermanIcon.onclick = function(){
-    currentMarvelFighter = 'spiderman';
-    marvelFighterPicture.src = 'images/fighters/spiderman/basic.gif'
-}
-
 setTimeout(function(){ mainHeader.innerText = 'Press Space To Start' }, 2000);
 
 document.onkeyup = function(e){
     if (e.keyCode == 32 && count == 0){
-        mainHeader.innerText = 'Control DC With A & Z Keys';
+        marvelFighterPicture.src = 'images/boss/thanosportal.gif'
+        setTimeout(function(){ marvelFighterPicture.src = 'images/boss/thanos.gif'; }, 1500);
         count++
     } else if (e.keyCode == 32 && count == 1){
-        mainHeader.innerText = 'Control Marvel With K & M Keys';
+        mainHeader.innerText = 'Control DC With A & Z Keys';
         count++
     } else if (e.keyCode == 32 && count == 2){
+        mainHeader.innerText = 'Control Marvel With K & M Keys';
+        count++
+    } else if (e.keyCode == 32 && count == 3){
         mainHeader.innerText = 'Start!';
         marvelBox.style.animation="fadeMarvel 1s";
         setTimeout(function(){ marvelBox.style.backgroundColor = 'rgb(31, 31, 31)'; }, 1000);
@@ -129,15 +91,15 @@ document.onkeyup = function(e){
         dcBlocking = true;
         setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcBlocking = false; }, 1000);
     } else if (e.keyCode == 75 && isGameOver == false){
-        marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/attack.gif`
+        marvelFighterPicture.src = 'images/boss/thanosattack.gif'
         console.log('marvel attack works')
         marvelAttacking = true;
         attack()
-        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 250);
+        setTimeout(function(){ marvelFighterPicture.src = 'images/boss/thanos.gif'; marvelAttacking = false; }, 750);
     } else if (e.keyCode == 77 && isGameOver == false){
-        marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/block.gif`
+        marvelFighterPicture.src = 'images/boss/thanosblock.gif'
         marvelBlocking = true;
-        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelBlocking = false; }, 1000);
+        setTimeout(function(){ marvelFighterPicture.src = 'images/boss/thanos.gif'; marvelBlocking = false; }, 1000);
     }
 }
 
@@ -146,7 +108,7 @@ function attack() {
         marvelHealth -= 5;
         marvelHealthBar.innerText = marvelHealth;
     } else if (dcBlocking == false && marvelAttacking == true) {
-        dcHealth -= 5;
+        dcHealth -= 10;
         dcHealthBar.innerText = dcHealth;
     }
 
@@ -154,11 +116,11 @@ function attack() {
         isGameOver = true;
         mainHeader.innerText = 'Marvel Wins!';
         dcFighterPicture.src = 'images/blank.png';
-        setTimeout(function(){ window.location.replace("marvelbossbattle.html"); }, 3000);
+        setTimeout(function(){ window.location.replace("characterselect.html"); }, 500);
     } else if (marvelHealth < 1) {
         isGameOver = true;
         mainHeader.innerText = 'DC Wins!';
         marvelFighterPicture.src = 'images/blank.png';
-        setTimeout(function(){ window.location.replace('dcbossbattle.html'); }, 3000)
+        setTimeout(function(){ window.location.replace("end.html"); }, 1000);
     }
 }

@@ -9,43 +9,55 @@
         html {
             background-color: rgb(31, 31, 31);
         }
+
+        #characterPreviewDc {
+            border: 1px black solid;
+            padding: 1px;
+            background-color: rgb(87, 87, 87);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #characterPreviewMarvel {
+            border: 1px black solid;
+            padding: 1px;
+            background-color: rgb(131, 25, 25);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
     </style>
 </head>
 <body scroll="no" style="overflow: hidden;">
-    <h1 class="characterSelectText">Character Select</h1>
-    <div class="content">
-        <div class="characterPreviewBox">
+    <h1 id="characterSelectText">Character Select</h1>
+    <div id="content">
+        <div id="characterPreviewBox">
             <div class="fiftyWidth">
-                <div class="characterPreviewDc">
-                    <h1 class="dcHealth">250</h1>
-                    <img class="dcFighter" src="">
-                </div>
-                <div class="icons">
-                    <img class="aquamanIcon" class="icon" src="images/icons/aquaman.png">
-                    <img class="batmanIcon" class="icon" src="images/icons/batman.png">
-                    <img class="flashIcon" class="icon" src="images/icons/flash.png">
-                    <img class="greenlanternIcon" class="icon" src="images/icons/greenlantern.png">
-                    <img class="nightwingIcon" class="icon" src="images/icons/nightwing.png">
-                    <img class="shazamIcon" class="icon" src="images/icons/shazam.png">
-                    <img class="superboyIcon" class="icon" src="images/icons/superboy.png">
+                <div id="characterPreviewDc">
+                    <h1 id="dcHealth">550</h1>
+                    <img id="dcFighter" src="">
                 </div>
             </div>
             <div class="fiftyWidth">
-                <div class="characterPreviewMarvel">
-                    <img class="marvelFighter" src="">
-                    <h1 class="marvelHealth">250</h1>
+                <div id="characterPreviewMarvel">
+                    <img id="marvelFighter" src="">
+                    <h1 id="marvelHealth">300</h1>
                 </div>
                 <div class="icons">
-                    <img class="blackpantherIcon" class="icon" src="images/icons/blackpanther.png">
-                    <img class="captainamericaIcon" class="icon" src="images/icons/captainamerica.png">
-                    <img class="cyclopsIcon" class="icon" src="images/icons/cyclops.png">
-                    <img class="daredevilIcon" class="icon" src="images/icons/daredevil.png">
-                    <img class="ghostriderIcon" class="icon" src="images/icons/ghostrider.png">
-                    <img class="mrfantasticIcon" class="icon" src="images/icons/mrfantastic.png">
-                    <img class="spidermanIcon" class="icon" src="images/icons/spiderman.png">
+                    <img id="blackpantherIcon" class="icon" src="images/icons/blackpanther.png">
+                    <img id="captainamericaIcon" class="icon" src="images/icons/captainamerica.png">
+                    <img id="cyclopsIcon" class="icon" src="images/icons/cyclops.png">
+                    <img id="daredevilIcon" class="icon" src="images/icons/daredevil.png">
+                    <img id="ghostriderIcon" class="icon" src="images/icons/ghostrider.png">
+                    <img id="mrfantasticIcon" class="icon" src="images/icons/mrfantastic.png">
+                    <img id="spidermanIcon" class="icon" src="images/icons/spiderman.png">
                 </div>
             </div>
         </div>
     </div>
 </body>
+<script src="marvelboss.js"></script>
 </html>
