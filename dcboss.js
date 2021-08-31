@@ -70,7 +70,7 @@ document.onkeyup = function(e){
         mainHeader.innerText = 'Control DC With A & Z Keys';
         count++
     } else if (e.keyCode == 32 && count == 2){
-        mainHeader.innerText = 'Control Marvel With K & M Keys';
+        mainHeader.innerText = 'Control Thanos With K & M Keys';
         count++
     } else if (e.keyCode == 32 && count == 3){
         mainHeader.innerText = 'Start!';
@@ -108,7 +108,7 @@ function attack() {
         marvelHealth -= 5;
         marvelHealthBar.innerText = marvelHealth;
     } else if (dcBlocking == false && marvelAttacking == true) {
-        dcHealth -= 10;
+        dcHealth -= 6;
         dcHealthBar.innerText = dcHealth;
     }
 

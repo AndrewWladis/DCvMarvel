@@ -105,7 +105,7 @@ document.onkeyup = function(e){
 
 function attack() {
     if (marvelBlocking === false && dcAttacking === true) {
-        marvelHealth -= 10;
+        marvelHealth -= 6;
         marvelHealthBar.innerText = marvelHealth;
     } else if (dcBlocking == false && marvelAttacking == true) {
         dcHealth -= 5;
