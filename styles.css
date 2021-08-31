@@ -52,6 +52,12 @@
     flex-direction: column;
 }
 
+.healthbar {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
 .icon {
     padding: 0.25em;
 }
@@ -110,6 +116,11 @@
 @keyframes fadeOut2 {
     to {color: rgb(31, 31, 31);}
     from {color: white;}
+}
+
+@keyframes powerbutton {
+    to {opacity: 100;}
+    from {opacity: 0;}
 }
 
 @keyframes spaceText {

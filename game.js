@@ -3,6 +3,10 @@ const dcBox = document.getElementById('characterPreviewDc');
 const marvelBox = document.getElementById('characterPreviewMarvel');
 const dcFighterPicture = document.getElementById('dcFighter');
 const marvelFighterPicture = document.getElementById('marvelFighter');
+const dcpowerbutton = document.getElementById('dcpowerup');
+const marvelpowerbutton = document.getElementById('marvelpowerup');
+let marvelispoweroff = false;
+let dcispoweroff = false;
 let aquamanIcon = document.getElementById('aquamanIcon');
 let batmanIcon = document.getElementById('batmanIcon');
 let flashIcon = document.getElementById('flashIcon');
@@ -113,9 +117,11 @@ document.onkeyup = function(e){
     } else if (e.keyCode == 32 && count == 2){
         mainHeader.innerText = 'Start!';
         marvelBox.style.animation="fadeMarvel 1s";
-        setTimeout(function(){ marvelBox.style.backgroundColor = 'rgb(31, 31, 31)'; }, 1000);
+        marvelpowerbutton.style.animation="powerbutton 1s";
+        setTimeout(function(){ marvelBox.style.backgroundColor = 'rgb(31, 31, 31)'; marvelpowerbutton.style.opacity = '100'; }, 1000);
         dcBox.style.animation="fadeDC 1s";
-        setTimeout(function(){ dcBox.style.backgroundColor = 'rgb(31, 31, 31)'; }, 1000);
+        dcpowerbutton.style.animation="powerbutton 1s";
+        setTimeout(function(){ dcBox.style.backgroundColor = 'rgb(31, 31, 31)'; dcpowerbutton.style.opacity = '100'; }, 1000);
         isGameOver = false;
         count++
     } else if (e.keyCode == 65 && isGameOver == false){
@@ -138,6 +144,34 @@ document.onkeyup = function(e){
         marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/block.gif`
         marvelBlocking = true;
         setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelBlocking = false; }, 1000);
+    }
+}
+
+dcpowerbutton.onclick = function(){
+    if (isGameOver === false && dcispoweroff === false) {
+        marvelHealth -= 25;
+        marvelHealthBar.innerText = marvelHealth;
+        dcHealth += 5;
+        dcHealthBar.innerText = dcHealth;
+        dcpowerbutton.style.opacity = '0';
+        dcispoweroff = true;
+        dcAttacking = true;
+        dcFighterPicture.src = `images/fighters/${currentDcFighter}/attack.gif`
+        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcAttacking = false; }, 1000);
+    }
+}
+
+marvelpowerbutton.onclick = function(){
+    if (isGameOver === false && marvelispoweroff === false) {
+        dcHealth -= 25;
+        dcHealthBar.innerText = dcHealth;
+        marvelHealth += 5;
+        marvelHealthBar.innerText = marvelHealth;
+        marvelpowerbutton.style.opacity = '0';
+        marvelispoweroff = true;
+        marvelAttacking = true;
+        marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/attack.gif`
+        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 1000);
     }
 }
 
