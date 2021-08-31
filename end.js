@@ -28,5 +28,10 @@ document.onclick = function(){
         endScreenText.style.animation="fadeOut2 1s";
         setTimeout(function(){ endScreenText.innerText = 'A Ducky Games Project' }, 1000);
         textCount++
+    } else if (textCount == 6) {
+        endScreenText.style.animation="fadeOut2 1s";
+        setTimeout(function(){ endScreenText.innerText = 'Coming soon...' }, 1000);
+        setTimeout(function(){ window.location.replace("https://youtu.be/QTT5iHCHSn0"); }, 1500);
+        textCount++
     }
 };
