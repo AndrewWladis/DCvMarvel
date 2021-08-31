@@ -157,7 +157,7 @@ dcpowerbutton.onclick = function(){
         dcispoweroff = true;
         dcAttacking = true;
         dcFighterPicture.src = `images/fighters/${currentDcFighter}/attack.gif`
-        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcAttacking = false; }, 1000);
+        setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcAttacking = false; }, 500);
     }
 }
 
@@ -171,7 +171,7 @@ marvelpowerbutton.onclick = function(){
         marvelispoweroff = true;
         marvelAttacking = true;
         marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/attack.gif`
-        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 1000);
+        setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 500);
     }
 }
 
