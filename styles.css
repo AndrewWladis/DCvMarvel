@@ -46,6 +46,18 @@
     font-family: futureFont;
 }
 
+.buttonrow {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.downloadButton {
+    background-color: rgb(91, 133, 86);
+    border-radius: 1vw;
+    box-shadow: 0vw 0vw 4vw rgb(26, 112, 23);
+}
+
 .fiftyWidth {
     width: 50%;
     display: flex;
@@ -79,8 +91,6 @@
 
 .startButton {
     background-color: rgb(91, 133, 86);
-    width: 200px;
-    height: 75px;
     border-radius: 1vw;
     box-shadow: 0vw 0vw 4vw rgb(26, 112, 23);
 }
@@ -96,6 +106,7 @@
     font-family: futureFont;
     display: flex;
     justify-content: center;
+    padding: 10px;
 }
 
 @keyframes fadeDC {
