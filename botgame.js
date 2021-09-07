@@ -49,49 +49,44 @@ window.onload = function() {
 
     if (playingAs === 'marvel') {
         if (numB === 0) {
-            currentDcFighter = 'aquaman';
-            dcFighterPicture.src = 'images/fighters/aquaman/basic.gif'
+            characterSelector('aquaman', 'dc');
         } else if (numB === 1) {
-            currentDcFighter = 'batman';
-            dcFighterPicture.src = 'images/fighters/batman/basic.gif'
+            characterSelector('batman', 'dc')
         } else if (numB === 2) {
-            currentDcFighter = 'flash';
-            dcFighterPicture.src = 'images/fighters/flash/basic.gif'
+            characterSelector('flash', 'dc')
         } else if (numB === 3) {
-            currentDcFighter = 'greenlantern';
-            dcFighterPicture.src = 'images/fighters/greenlantern/basic.gif'
+            characterSelector('greenlantern', 'dc')
         } else if (numB === 4) {
-            currentDcFighter = 'nightwing';
-            dcFighterPicture.src = 'images/fighters/nightwing/basic.gif'
+            characterSelector('nightwing', 'dc')
         } else if (numB === 5) {
-            currentDcFighter = 'shazam';
-            dcFighterPicture.src = 'images/fighters/shazam/basic.gif'
+            characterSelector('shazam', 'dc')
         } else if (numB === 5) {
-            currentDcFighter = 'superboy';
-            dcFighterPicture.src = 'images/fighters/superboy/basic.gif'
+            characterSelector('superboy', 'dc')
         }
     } else if (playingAs === 'dc') {
         if (numB === 0) {
-            currentMarvelFighter = 'blackpanther';
-            marvelFighterPicture.src = 'images/fighters/blackpanther/basic.gif'
+            characterSelector('blackpanther', 'marvel')
         } else if (numB === 1) {
-            currentMarvelFighter = 'captainamerica';
-            marvelFighterPicture.src = 'images/fighters/captainamerica/basic.gif'
+            characterSelector('captainamerica', 'marvel')
         } else if (numB === 2) {
-            currentMarvelFighter = 'cyclops';
-            marvelFighterPicture.src = 'images/fighters/cyclops/basic.gif'
+            characterSelector('cyclops', 'marvel')
         } else if (numB === 3) {
-            currentMarvelFighter = 'daredevil';
-            marvelFighterPicture.src = 'images/fighters/daredevil/basic.gif'
+            characterSelector('daredevil', 'marvel')
         } else if (numB === 4) {
-            currentMarvelFighter = 'ghostrider';
-            marvelFighterPicture.src = 'images/fighters/ghostrider/basic.gif'
+            characterSelector('ghostrider', 'marvel')
         } else if (numB === 5) {
-            currentMarvelFighter = 'mrfantastic';
-            marvelFighterPicture.src = 'images/fighters/mrfantastic/basic.gif'
+            characterSelector('mrfantastic', 'marvel')
         } else if (numB === 6) {
-            currentMarvelFighter = 'spiderman';
-            marvelFighterPicture.src = 'images/fighters/spiderman/basic.gif'
+            characterSelector('spiderman', 'marvel')
+        }
+    }
+    function characterSelector(hero, brand) {
+        if (brand === 'marvel') {
+            currentMarvelFighter = hero;
+            marvelFighterPicture.src = `images/fighters/${hero}/basic.gif`
+        } else if (brand === 'dc') {
+            currentdcFighter = hero;
+            dcFighterPicture.src = `images/fighters/${hero}/basic.gif`
         }
     }
 
