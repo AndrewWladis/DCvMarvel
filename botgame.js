@@ -21,7 +21,7 @@ let mrfantasticIcon = document.getElementById('mrfantasticIcon');
 let spidermanIcon = document.getElementById('spidermanIcon');
 let currentDcFighter = 'base';
 let currentMarvelFighter = 'base';
-let isGameOver = true;
+let isGameOver = false;
 let dcBlocking = false;
 let marvelBlocking = false;
 let dcAttacking = false;
@@ -181,8 +181,8 @@ document.onkeyup = function(e){
         setTimeout(function(){ marvelBox.style.backgroundColor = 'rgb(31, 31, 31)'; }, 1000);
         dcBox.style.animation="fadeDC 1s";
         setTimeout(function(){ dcBox.style.backgroundColor = 'rgb(31, 31, 31)'; }, 1000);
-        isGameOver = false;
         count++
+        isGameOver = false;
     } else if (e.keyCode == 65 && isGameOver == false && playingAs === 'dc'){
         dcFighterPicture.src = `images/fighters/${currentDcFighter}/attack.gif`
         console.log('dc attack works')
@@ -205,42 +205,46 @@ document.onkeyup = function(e){
         setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelBlocking = false; }, 1000);
     }
 }
-
-while (isGameOver === false) {
-    let botNum = Math.floor(Math.random() * 2);
-    console.log('while works')
-    if (playingAs === 'dc') {
-        if (botNum === 0) {
-            marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/attack.gif`
-            marvelAttacking = true;
-            console.log('bot works')
-            attack()
-            setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 250);
-        } else if (botNum === 0) {
-            marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/block.gif`
-            marvelBlocking = true;
-            console.log('bot works')
-            setTimeout(function(){ marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelBlocking = false; }, 1000);
-        }
-    } else if (playingAs === 'marvel') {
-        if (botNum === 0) {
-            dcFighterPicture.src = `images/fighters/${currentDcFighter}/attack.gif`
-            dcAttacking = true;
-            attack()
-            console.log('bot works')
-            setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentdcFighter}/basic.gif`; dcAttacking = false; }, 250);
-        } else if (botNum === 0) {
-            dcFighterPicture.src = `images/fighters/${currentdcFighter}/block.gif`
-            dcBlocking = true;
-            console.log('bot works')
-            setTimeout(function(){ dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcBlocking = false; }, 1000);
-        }
+console.log(isGameOver)
+    if (isGameOver == false) {
+        setInterval(function () {
+            let botNum = Math.floor(Math.random() * 2);
+            console.log('while works')
+            if (playingAs === 'dc') {
+                if (botNum === 0) {
+                    marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/attack.gif`
+                    marvelAttacking = true;
+                    console.log('bot works')
+                    attack()
+                    setTimeout(function () { marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelAttacking = false; }, 250);
+                } else if (botNum === 0) {
+                    marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/block.gif`
+                    marvelBlocking = true;
+                    console.log('bot works')
+                    setTimeout(function () { marvelFighterPicture.src = `images/fighters/${currentMarvelFighter}/basic.gif`; marvelBlocking = false; }, 1000);
+                }
+            } else if (playingAs === 'marvel') {
+                if (botNum === 0) {
+                    dcFighterPicture.src = `images/fighters/${currentDcFighter}/attack.gif`
+                    dcAttacking = true;
+                    attack()
+                    console.log('bot works')
+                    setTimeout(function () { dcFighterPicture.src = `images/fighters/${currentdcFighter}/basic.gif`; dcAttacking = false; }, 250);
+                } else if (botNum === 0) {
+                    dcFighterPicture.src = `images/fighters/${currentdcFighter}/block.gif`
+                    dcBlocking = true;
+                    console.log('bot works')
+                    setTimeout(function () { dcFighterPicture.src = `images/fighters/${currentDcFighter}/basic.gif`; dcBlocking = false; }, 1000);
+                }
+            }
+        }, 250);
     }
-}
+
 function attack() {
     if (marvelBlocking === false && dcAttacking === true) {
         marvelHealth -= 5;
         marvelHealthBar.innerText = marvelHealth;
+        console.log('attack funtion works')
     } else if (dcBlocking == false && marvelAttacking == true) {
         dcHealth -= 5;
         dcHealthBar.innerText = dcHealth;
