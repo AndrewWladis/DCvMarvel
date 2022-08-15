@@ -115,7 +115,7 @@ document.onkeyup = function(e){
         mainHeader.innerText = 'Control Marvel With K & M Keys';
         count++
     } else if (e.keyCode == 32 && count == 2){
-        mainHeader.innerText = 'Start!';
+        mainHeader.innerText = 'START!';
         marvelBox.style.animation="fadeMarvel 1s";
         marvelpowerbutton.style.animation="powerbutton 1s";
         setTimeout(function(){ marvelBox.style.backgroundColor = 'rgb(31, 31, 31)'; marvelpowerbutton.style.opacity = '100'; }, 1000);
